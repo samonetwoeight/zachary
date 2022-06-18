@@ -58,3 +58,5 @@ $route['Logout'] = 'Login/logout';
 $route['AddUser'] = 'User/AddUser';
 $route['UpdateUser'] = 'User/UpdateUser';
 $route['DeleteUser'] = 'User/DeleteUser';
+
+$route['AddSchedular'] = 'Schedular/AddSchedular';

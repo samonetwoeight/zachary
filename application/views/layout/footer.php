@@ -61,6 +61,10 @@
 		<!--end::Page Vendors-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="<?php echo base_url('assets/js/pages/widgets.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/bootstrap-datepicker.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/bootstrap-daterangepicker.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/bootstrap-datetimepicker.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/fullcalendar.bundle.js');?>"></script>
 		<!--end::Page Scripts-->
 	
 	<!--end::Body-->
