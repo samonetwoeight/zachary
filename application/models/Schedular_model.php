@@ -24,9 +24,11 @@ class Schedular_model extends CI_Model {
 	public function addSchedular(){
 
 		for($i=1; $i<=$_POST['Number']; $i++){
-			$this->db->set('StaffID', $_POST['Staff'.$i]);
+			$Service = explode("_", $_POST['Service'.$i]);
+			$StaffID = explode("_", $_POST['Staff'.$i]);
+			$this->db->set('StaffID', $StaffID[0]);
 			$this->db->set('CustomerName', $_POST['CustomerName'.$i]);
-			$this->db->set('Service', $_POST['Service'.$i]);
+			$this->db->set('Service', $Service[0]);
 			$this->db->set('StartTime', $_POST['Date'].' '.$_POST['Time'].':00');
 			$this->db->set('Period', $_POST['Duration'.$i]);
 			$this->db->set('Status', 'Y');
@@ -38,6 +40,25 @@ class Schedular_model extends CI_Model {
 		return TRUE;
 	}
 
+	public function checkservice(){
+
+		$this->db->where($_POST['Service'], 'Y');
+		$this->db->where('Status', 'Y');
+		$q = $this->db->get('users');
+
+		return $q->result();
+	}
+
+
+	public function getstaffschedule(){
+
+		$this->db->where('StaffID', $_POST['Staff']);
+		$this->db->where('DATE_FORMAT(StartTime, "%Y-%m-%d") =', $_POST['Date']);
+		$this->db->where('Status', 'Y');
+		$q = $this->db->get('schedular');
+
+		return $q->result_array();
+	}
 
 }
 

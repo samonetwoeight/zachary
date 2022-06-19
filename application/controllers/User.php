@@ -16,7 +16,7 @@ class User extends MY_Controller {
 
 	public function index()
 	{
-		$info['title'] = 'User';
+		$info['title'] = 'Admin';
 		$info['addlink'] = base_url('AddUser');
 		$data = array();
         $limit_per_page = 50;
@@ -60,7 +60,7 @@ class User extends MY_Controller {
 
 	public function AddUser(){
 
-		$info['title'] = 'Add User';
+		$info['title'] = 'Add Admin';
 		$data['Action'] = 'Add';
 		$result = new StdClass();
 		$result->FootCheck = 'checked';
