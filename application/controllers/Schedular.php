@@ -152,7 +152,7 @@ class Schedular extends CI_Controller {
 			}
 		}
 
-		$timeslot = '1000';
+		$timeslot = date('Hi', strtotime($_POST['Time']));
 		$availableslot = array('Y','Y','Y','Y');
 		$counter=0;
 		for($k=$timeslot; $k<(50*4+$timeslot); $k+=50){
