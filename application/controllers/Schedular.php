@@ -61,12 +61,21 @@ class Schedular extends CI_Controller {
 							$hour += 1;
 						}
 						$var = $hour.$min;
-						$user->$var = '<button class="btn btn-light-danger font-weight-bold p-2"><i class="fa-solid fa-xmark pr-0"></i></button>';
+						$user->$var = '<button class="btn btn-light-danger font-weight-bold p-2" title="'.$result->CustomerName.'"><i class="fa-solid fa-xmark pr-0"></i></button>';
 					}
 				}
 			}
 		}
 		$data['results'] = $users;
+		if(isset($_GET['date'])){
+			$data['date'] = date('Y-m-d', strtotime($_GET['date']));
+			$data['prevdate'] = date('Y-m-d', strtotime($_GET['date'] . '-1 day'));
+			$data['nextdate'] = date('Y-m-d', strtotime($_GET['date'] . '+1 day'));
+		}else{
+			$data['date'] = date('Y-m-d');
+			$data['prevdate']= date('Y-m-d', strtotime(date('Y-m-d') . '-1 day'));
+			$data['nextdate'] = date('Y-m-d', strtotime(date('Y-m-d') . '+1 day'));
+		}
 
 		$this->load->view('layout/header', $info);
 		$this->load->view('schedular/schedular',$data);

@@ -13,8 +13,8 @@
 				<div class="row">
 					<div class="col-md-4">
 						<label>Date</label>
-						<div class="input-group date" id="kt_datepicker_1" data-target-input="nearest">
-							<input type="text" class="form-control datepicker-input <?php if(form_error('Date')){ echo 'is-invalid';} ?>" placeholder="Select date" data-target="#kt_datepicker_1" name="Date" id="Date" autocomplete="false">
+						<div class="input-group date" id="kt1_datepicker_1" data-target-input="nearest">
+							<input type="text" class="form-control datepicker-input <?php if(form_error('Date')){ echo 'is-invalid';} ?>" placeholder="Select date" data-target="#kt1_datepicker_1" name="Date" id="Date" autocomplete="false">
 							<div class="input-group-append" data-target="#kt_datetimepicker_1" data-toggle="datepicker">
 								<span class="input-group-text">
 									<i class="ki ki-calendar"></i>
@@ -40,7 +40,7 @@
 					</div>
 					<div class="col-md-4 mb-5">
 						<label>Number of Pax</label>
-						<input type="number" name="Number" class="form-control form-control-solid mb-2 <?php if(form_error('Number')){ echo 'is-invalid';} ?>" onkeyup="populate(this.value)">
+						<input type="number" name="Number" id="Number" class="form-control form-control-solid mb-2 <?php if(form_error('Number')){ echo 'is-invalid';} ?>" onkeyup="populate(this.value)" disabled='true'>
 						<?php echo form_error('Number', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 
@@ -49,7 +49,7 @@
 				</div>
 			</div>
 			<div class="card-footer text-right">
-				<a href="<?php echo base_url('User'); ?>" name="Cancel" class="btn btn-secondary mr-2">Cancel</a>
+				<a href="<?php echo base_url('Schedular'); ?>" name="Cancel" class="btn btn-secondary mr-2">Cancel</a>
                 <input type="submit" name="Submit" class="btn btn-primary" value="Submit">
             </div>
 		</form>
@@ -58,6 +58,12 @@
 </div>
 
 <script type="text/javascript">
+
+	$('#Time').on('change',function(){
+		$('#Number').prop('disabled', false);
+        $('#Number').prop('value', '');
+        $('#CustomerContainer').empty();
+	})
 
 	function checkservice(value){
 		var customer = value.split("_");
@@ -127,11 +133,11 @@
 						'<div class="row">'+
 							'<div class="col-md-3">'+
 								'<label>Customer Name</label>'+
-								'<input type="text" name="CustomerName'+i+'" class="form-control">'+
+								'<input type="text" name="CustomerName'+i+'" class="form-control" required>'+
 							'</div>'+
 							'<div class="col-md-3">'+
 								'<label>Service</label>'+
-								'<select class="form-control" name="Service'+i+'" onchange="checkservice(this.value)">'+
+								'<select class="form-control" name="Service'+i+'" onchange="checkservice(this.value)" required>'+
 									'<option>---</option>'+
 									'<option value="Foot_'+i+'">Foot</option>'+
 									'<option value="Body_'+i+'">Body</option>'+
@@ -143,11 +149,11 @@
 							'</div>'+
 							'<div class="col-md-3">'+
 								'<label>Staff</label>'+
-								'<select class="form-control" name="Staff'+i+'" id="Staff'+i+'" onchange="checktimeslot(this.value)"></select>'+
+								'<select class="form-control" name="Staff'+i+'" id="Staff'+i+'" onchange="checktimeslot(this.value)" required></select>'+
 							'</div>'+
 							'<div class="col-md-3">'+
 								'<label>Duration</label>'+
-								'<select class="form-control" name="Duration'+i+'" id="Duration'+i+'">'+
+								'<select class="form-control" name="Duration'+i+'" id="Duration'+i+'" required>'+
 								'</select>'+
 							'</div>'+
 						'</div>'+
@@ -157,3 +163,4 @@
 		}
 	}
 </script>
+

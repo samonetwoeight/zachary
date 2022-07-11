@@ -22,9 +22,24 @@ var KTBootstrapDatepicker = function () {
             rtl: KTUtil.isRTL(),
             todayHighlight: true,
             orientation: "bottom left",
+            autoclose: true,
             templates: arrows,
             format: 'yyyy-mm-dd'
         });
+
+        $('#kt1_datepicker_1, #kt1_datepicker_1_validate').datepicker({
+            rtl: KTUtil.isRTL(),
+            todayHighlight: true,
+            orientation: "bottom left",
+            autoclose: true,
+            templates: arrows,
+            format: 'yyyy-mm-dd'
+        }).on('change',function(){
+            $('#Number').prop('disabled', false);
+            $('#Number').prop('value', '');
+            $('#CustomerContainer').empty();
+        });
+
 
         // minimum setup for modal demo
         $('#kt_datepicker_1_modal').datepicker({

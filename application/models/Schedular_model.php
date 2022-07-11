@@ -5,9 +5,15 @@ class Schedular_model extends CI_Model {
 
 	public function getSchedular(){
 
+		if(isset($_GET['date'])){
+			$date = date('Y-m-d', strtotime($_GET['date']));
+		}else{
+			$date = date('Y-m-d');
+		}
+
 		$this->db->from('schedular a');
 		$this->db->join('users b', 'b.ID = a.StaffID', 'left');
-		$this->db->where('DATE_FORMAT(a.StartTime, "%Y-%m-%d") =', date('Y-m-d'));
+		$this->db->where('DATE_FORMAT(a.StartTime, "%Y-%m-%d") =', $date);
 		$q = $this->db->get();
 
 		return $q->result();

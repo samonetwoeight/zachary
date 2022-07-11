@@ -1,5 +1,11 @@
-<div class="container">
-	<h3 class="text-center"><?php echo date('jS M Y'); ?></h3>
+<div class="container text-center">
+	<div class="row">
+		<div class="col-md-4 m-auto" style="display: flex">
+			<a href="<?php echo base_url('Schedular?date='.$prevdate); ?>" class="btn btn-primary p-0" style="flex:1; font-size: 25px;"> < </a>
+			<h3 class="text-center m-auto" style="flex:4;"><?php echo date('jS M Y', strtotime($date)); ?></h3>
+			<a href="<?php echo base_url('Schedular?date='.$nextdate); ?>" class="btn btn-primary p-0" style="flex:1; font-size: 25px;"> > </a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12" style="overflow-x: auto;">
 			<table class="table table-bordered table-hover table-checkable" style="min-width: 600px;">
